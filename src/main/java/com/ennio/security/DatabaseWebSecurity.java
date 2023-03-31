@@ -52,7 +52,8 @@ public class DatabaseWebSecurity {
 
 		// Todas las demás URLs de la Aplicación requieren autenticación
 		.anyRequest().authenticated()
-
+		//paa usar el login por defecto
+		//.and().formLogin().permitAll();
 		// El formulario de Login no requiere autenticacion
 		.and().formLogin().loginPage("/login").permitAll().and().logout().permitAll();
 

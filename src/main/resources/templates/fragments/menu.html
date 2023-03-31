@@ -19,10 +19,18 @@
         <a class="nav-link" th:href="@{/about}">Acerca</a>
       </li>                    
     </ul>
+    <!-- Renderizar un elemento HTML para usuarios anónimos (usuarios que no han iniciado sesión). -->
     <div sec:authorize="isAnonymous()">
 		<a class="btn btn-primary" th:href="@{/index}">Ingresar</a>&nbsp;
-		<a class="btn btn-primary" th:href="@{/signup}">Registrarse</a>
-	</div>	    
+		<a class="btn btn-primary" th:href="@{/signup}">Registrarse</a>&nbsp
+		<!-- Renderizar atributos almacenados en la sesión.
+		<span th:if="${session.usuario != null}" class="text-light" th:text="'Bienvenido ' + ${session.usuario.nombre}"></span>&nbsp; -->
+		<!-- Renderizar en la vista el nombre del usuario que inicio sesión.
+		<span class="text-light">Bienvenido</span>&nbsp;<span class="text-light" sec:authentication="name"></span> -->
+		
+		
+	</div>	   
+	<!-- Renderizar un elemento HTML para usuarios autenticados (usuarios que ya han iniciado sesión). --> 
     <div sec:authorize="isAuthenticated()">
 		<span class="text-light">Bienvenido</span>&nbsp;<span class="text-light" sec:authentication="name"></span>&nbsp;
 		<a class="btn btn-primary" th:href="@{/logout}">Salir</a>
